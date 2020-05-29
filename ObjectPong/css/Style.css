@@ -1,8 +1,11 @@
-﻿html, body {
+﻿/* Standard styles for an animation game */
+/* By: Tony Beier May 10, 2020 */
+
+/* By: Matt Mongeau */
+html, body {
 	height: 100%;
 	margin: 0;
 }
-
 body {
 	align-items: center;
 	background: black;
@@ -10,11 +13,13 @@ body {
 	justify-content: center;
 }
 
+/* By: Tony Beier May 10, 2020 */
 .gameTitle {
 	text-align: center;
 	width: calc(100% - 400px);
 }
 
+/* By: Tony Beier May 10, 2020 */
 #topPlayerScore {
 	background-color: black;
 	color: white;
@@ -24,16 +29,18 @@ body {
 	width: 200px;
 }
 
+/* By: Tony Beier May 10, 2020 */
 #bottomPlayerScore {
 	background-color: black;
 	color: white;
-	display: inline-block;
+	display: inline-nblock;
 	float: right;
 	padding: 1rem;
 	text-align: right;
 	width: 200px;
 }
 
+/* By: Tony Beier May 10, 2020 */
 .instructions {
 	background-color: white;
 	color: black;
@@ -43,17 +50,20 @@ body {
 	width: 300px;
 }
 
+/* By: Tony Beier May 10, 2020 */
 .keys {
 	float: right;
 	text-align: center;
 }
 
+/* By: Tony Beier May 10, 2020 */
 kbd {
 	border-radius: 2px;
 	padding: 2px;
 	border: 1px solid black;
 }
 
+/* By: Tony Beier May 10, 2020 */
 #arena {
 	clear: both;
 	height: 600px;
@@ -63,16 +73,18 @@ kbd {
 	width: 400px;
 }
 
+/* By: Tony Beier May 10, 2020 */
 .topPlayer {
-	display: inline-block;
+	display: none;
 	height: 50px;
 	position: absolute;
 	top: -40px;
 	width: 50px;
 }
 
+/* By: Tony Beier May 10, 2020 */
 .bottomPlayer {
-	display: inline-block;
+	display: none;
 	height: 50px;
 	position: absolute;
 	top: 580px;

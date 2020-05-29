@@ -1,4 +1,4 @@
-﻿// Pong Clone In JavaScript
+﻿// Oject Pong Clone In JavaScript
 // By: Matt Mongeau
 // https://jsfiddle.net/kHJr6/2/
 // Modified by:  Tony Beier May 10, 2020
@@ -15,6 +15,7 @@ var bottomPlayerScore = document.getElementById("bottomPlayerScore");
 
 const ballSize = 5;
 
+// By:  Tony Beier May 10, 2020
 class Paddle extends Character {
     constructor(playerPosition, playerImageID) {
         var row = 0;
@@ -30,7 +31,7 @@ class Paddle extends Character {
 
         this.playerPosition = playerPosition;
 
-        if (playerImageID == undefined || playerImageID == null || playerImageID == "")
+        if (playerImageID) // == undefined || playerImageID == null || playerImageID == "")
             this.playerImage = null;
         else {
             this.playerImage = document.getElementById(playerImageID);
@@ -38,6 +39,7 @@ class Paddle extends Character {
                 this.playerImage.className = "topPlayer";
             else
                 this.playerImage.className = "bottomPlayer";
+            this.playerImage.style.display = "inline-block";
         }
 
         this.colSpeed = 0;
@@ -46,7 +48,9 @@ class Paddle extends Character {
         this.wins = 0;
     }
 
+    // By:  Tony Beier May 10, 2020
     CheckSpeed() {
+        // By: Matt Mongeau
         // Reduce speed to the allowed maximum (no cheating)
         if (this.colSpeed < 0 && this.colSpeed < -maxPaddleSpeed) { // max speed left
             this.colSpeed = -maxPaddleSpeed;
@@ -55,6 +59,7 @@ class Paddle extends Character {
         }
     }
 
+    // By:  Tony Beier May 10, 2020
     DrawIt() {
         super.DrawIt()
 
@@ -62,6 +67,7 @@ class Paddle extends Character {
             this.playerImage.style.left = this.col + "px";
     }
 
+    // By: Matt Mongeau
     MoveIt() {
         this.CheckSpeed();
 
@@ -76,6 +82,7 @@ class Paddle extends Character {
         }
     }
 
+    // By:  Tony Beier May 10, 2020
     Wins() {
         this.wins++;
         if (this.playerPosition == topPlayer)
@@ -85,11 +92,13 @@ class Paddle extends Character {
     }
 }
 
+// By:  Tony Beier May 10, 2020
 class Player extends Paddle {
     constructor(playerPosition, playerImageID) {
-        super(playerPosition);
+        super(playerPosition, playerImageID);
     }
 
+    // By: Matt Mongeau
     Update(ball) {
         for (var key in keysDown) {
             var value = Number(key);
@@ -108,6 +117,7 @@ class Player extends Paddle {
 
 
 // *** Computer AI ****
+// By: Matt Mongeau
 class Computer extends Paddle {
     constructor(playerPosition) {
         super(playerPosition);
@@ -121,10 +131,10 @@ class Computer extends Paddle {
 }
 
 // *** Tony AI ****
+// By:  Tony Beier May 10, 2020
 class Tony extends Paddle {
     constructor(playerPosition) {
-        super(playerPosition);
-        this.playerImage = document.getElementById("tony");
+        super(playerPosition, "tony");
     }
 
     Update(ball) {
@@ -155,6 +165,7 @@ class Tony extends Paddle {
 
 
 // *** Cheating  AI ****
+// By:  Tony Beier May 10, 2020
 class Cheater extends Paddle {
     constructor(playerPosition) {
         super(playerPosition);
@@ -199,7 +210,9 @@ class Cheater extends Paddle {
 }
 
 
+// By: Matt Mongeau
 class Ball extends Character {
+    // By:  Tony Beier May 10, 2020
     constructor(col, row) {
         super(col, row, ballSize * 2, ballSize * 2, "#000000", "ball");
 
@@ -208,6 +221,7 @@ class Ball extends Character {
         this.radius = ballSize;
     }
 
+    // By:  Tony Beier May 10, 2020
     Reset() {
         this.colSpeed = 1;
         this.rowSpeed = 3;
@@ -215,6 +229,7 @@ class Ball extends Character {
         this.row = canvas.height / 2;
     }
 
+    // By: Matt Mongeau
     Update(paddle1, paddle2) {
         super.MoveIt();
 
@@ -253,6 +268,7 @@ var player1 = new Cheater(bottomPlayer);
 var player2 = new Cheater(topPlayer);
 var ball = new Ball(canvas.width / 2, canvas.height / 2);
 
+// By: Matt Mongeau
 var DrawEverything = function () {
     Canvas2D.fillStyle = "#FF00FF";
     Canvas2D.fillRect(0, 0, canvas.width, canvas.height);
@@ -262,6 +278,7 @@ var DrawEverything = function () {
 }
 
 
+// By: Matt Mongeau
 var UpdateEverything = function () {
     player1.Update(ball);
     player2.Update(ball);
@@ -269,10 +286,10 @@ var UpdateEverything = function () {
 }
 
 
+// By: Matt Mongeau
 window.addEventListener("keydown", function (event) {
     keysDown[event.keyCode] = true;
 });
-
 window.addEventListener("keyup", function (event) {
     delete keysDown[event.keyCode];
 });

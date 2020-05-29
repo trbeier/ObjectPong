@@ -3,6 +3,7 @@
 
 
 // ***** Start Key Codes Constants *****
+// By:  Tony Beier May 10 - 20, 2020
 const leftArrowKey = 37;
 const upArrowKey = 38;
 const rightArrowKey = 39;
@@ -11,12 +12,10 @@ const downArrowKey = 40;
 
 
 // ***** Start Setup the Canvas *****
-class Canvas {
-
-}
 var canvas = document.getElementById('canvas1');
 var Canvas2D = canvas.getContext('2d');
 
+// By:  Tony Beier May 10 - 20, 2020
 function drawDot(col, row) { Canvas2D.fillRect(col, row, 1, 1); }
 function drawLine(col1, row1, col2, row2) {
     Canvas2D.beginPath();
@@ -33,10 +32,12 @@ function drawBall(col, row, radius) {
     Canvas2D.fill();
 }
 
+// By:  Tony Beier May 10 - 20, 2020
 function LeftOfCanvas(col) { return (col < 0); }
 function CenterColOfCanvas(itemWidth=0) { return (canvas.width - itemWidth) / 2; }
 function RightOfCanvas(col) { return (col > canvas.width); }
 
+// By:  Tony Beier May 10 - 20, 2020
 function AboveCanvas(row) { return (row < 0); }
 function CenterRowOfCanvas(itemHeight = 0) { return (canvas.height - itemHeight) / 2; }
 function BelowCanvas(row) { return (row > canvas.height); }
@@ -54,6 +55,7 @@ var UpdateEverything = function () { };
 var DrawEverything = function () { };
 
 // The animation cycle:  Update, Draw, Wait for next refresh and then do it all again!
+// By: Matt Mongeau
 var RefreshTheScreen = function () {
 	UpdateEverything();
 	DrawEverything();
@@ -67,9 +69,11 @@ animate(RefreshTheScreen);
 
 
 // ***** Start Character Object *****
+// By:  Tony Beier May 10 - 20, 2020
 const NoCollission = null;
 var characterList = [];
 
+// By:  Tony Beier May 10 - 20, 2020
 class Character {
     constructor(col, row, width, height, color, shape) {
         this.col = col;
@@ -91,6 +95,7 @@ class Character {
         this.characterNumber = characterList.push(this) -1;
     }
 
+    // By:  Tony Beier May 10 - 20, 2020
     get colCenter() { return this.col + (this.width / 2); }
     get rowCenter() { return this.row + (this.height / 2); }
     get top() { return this.row - (this.isBall ? this.radius : 0); }
@@ -98,6 +103,7 @@ class Character {
     get left() { return this.col - (this.isBall ? this.radius : 0); }
     get right() { return this.col + (this.isBall ? this.radius : this.width); }
 
+    // By:  Tony Beier May 10 - 20, 2020
     DistanceToMyRow(thatRow) {
         var ret;
         if (this.row == thatRow)
@@ -120,13 +126,16 @@ class Character {
     }
 
     Collision(that) {
+        // By:  Tony Beier May 10 - 20, 2020
         // Don't check if it collides with itself
         if (this.WeAreTheSame(that))
             return false;
         else
+            // By: Matt Mongeau
             return (this.top < that.bottom && this.bottom > that.top
                 && this.left < that.right && this.right > that.left);
     }
+    // By:  Tony Beier May 10 - 20, 2020
     WeHaveCollidedWith() {
         for (var indeX = 0; indeX < characterList.length; indeX++) {
             if (this.Collision(characterList[indeX]))
@@ -136,7 +145,9 @@ class Character {
         return NoCollission;
     }
 
+    // By:  Tony Beier May 10 - 20, 2020
     DrawIt() {
+        // By: Matt Mongeau
         Canvas2D.fillStyle = this.color;
         if (this.isRectangle)
             Canvas2D.fillRect(this.col, this.row, this.width, this.height);
@@ -149,11 +160,13 @@ class Character {
             alert("Unknown shape");
     }
 
+    // By: Matt Mongeau
     MoveIt() {
         this.col += this.colSpeed;
         this.row += this.rowSpeed;
     }
 
+    // By:  Tony Beier May 10 - 20, 2020
     WeAreTheSame(that) {
         return this.characterNumber == that.characterNumber;
     }
