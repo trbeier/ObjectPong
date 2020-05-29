@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<!-- By: Matt Mongeau -->
+	<!-- https://jsfiddle.net/kHJr6/2/ -->
+	<!-- modified by:  Tony Beier May 10, 2020 -->
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Pong Clone</title>
+
+	<!-- include External Style Sheet -->
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div id="topPlayerScore">Top: 0</div>
+	<div id="bottomPlayerScore">Bottom: 0</div>
+
+	<h1 class="gameTitle">Welcome to Pong</h1>
+
+	<p class="instructions">
+		Use the arrow keys to move the paddle to block the ball.
+		If the ball gets past you, you loose and the game restarts.
+		If you get the ball past the othe player you win!
+	</p>
+
+	<div class="instructions keys">
+		<h2>Player movement</h2>
+		<p><kbd>&larr;</kbd> &nbsp; <kbd>&rarr;</kbd></p>
+	</div>
+
+	<div id="arena">
+		<canvas width="400" height="600" id="canvas1"></canvas>
+		<img src="images/TonyBeier2020.jpg" id="tony" class="bottomPlayer" />
+	</div>
+
+	<script src="js/Animation.js"></script>
+	<script src="js/Pong.js"></script>
+</body>
+</html>

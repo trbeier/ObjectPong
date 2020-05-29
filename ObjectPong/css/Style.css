@@ -1,0 +1,80 @@
+﻿html, body {
+	height: 100%;
+	margin: 0;
+}
+
+body {
+	align-items: center;
+	background: black;
+	color: white;
+	justify-content: center;
+}
+
+.gameTitle {
+	text-align: center;
+	width: calc(100% - 400px);
+}
+
+#topPlayerScore {
+	background-color: black;
+	color: white;
+	display: inline-block;
+	float: left;
+	padding: 1rem;
+	width: 200px;
+}
+
+#bottomPlayerScore {
+	background-color: black;
+	color: white;
+	display: inline-block;
+	float: right;
+	padding: 1rem;
+	text-align: right;
+	width: 200px;
+}
+
+.instructions {
+	background-color: white;
+	color: black;
+	display: inline-block;
+	float: left;
+	padding: 1rem;
+	width: 300px;
+}
+
+.keys {
+	float: right;
+	text-align: center;
+}
+
+kbd {
+	border-radius: 2px;
+	padding: 2px;
+	border: 1px solid black;
+}
+
+#arena {
+	clear: both;
+	height: 600px;
+	left: calc( (100% - 400px) / 2);
+	position: relative;
+	text-align: center;
+	width: 400px;
+}
+
+.topPlayer {
+	display: inline-block;
+	height: 50px;
+	position: absolute;
+	top: -40px;
+	width: 50px;
+}
+
+.bottomPlayer {
+	display: inline-block;
+	height: 50px;
+	position: absolute;
+	top: 580px;
+	width: 50px;
+}
