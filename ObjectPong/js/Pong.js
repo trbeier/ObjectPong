@@ -31,9 +31,9 @@ class Paddle extends Character {
 
         this.playerPosition = playerPosition;
 
-        if (playerImageID) // == undefined || playerImageID == null || playerImageID == "")
-            this.playerImage = null;
-        else {
+        if (playerImageID) { // == undefined || playerImageID == null || playerImageID == "")
+        //    this.playerImage = null;
+        //else {
             this.playerImage = document.getElementById(playerImageID);
             if (playerPosition == topPlayer)
                 this.playerImage.className = "topPlayer";
